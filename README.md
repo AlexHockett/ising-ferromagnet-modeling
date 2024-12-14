@@ -1,2 +1,3 @@
-# ising-ferromagnet-modeling
-Simulating Hamiltonian time-evolution for Ising ferromagnets
+# Project Overview
+
+![Research Overview](Figures/research_poster.png)
