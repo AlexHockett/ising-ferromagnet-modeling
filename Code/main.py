@@ -5,7 +5,7 @@ import numpy as np
 
 default_trails = 1000
 
-# Custom variables - Shreyas, is this what you were looking for - Xiangtuo
+# Custom variables
 default_N, default_J, default_T, default_h = 10, -1, 1, 0
 use_custom_values = input("Do you want to input custom values (y/n):").lower().strip()
 if use_custom_values == 'y':
@@ -24,11 +24,9 @@ clusterChangeX = np.zeros(clusterSize)
 for i in range(clusterSize):
     clusterChangeX[i] = i + 1
 
-model = model.Model(N, J, T,
-                    h, trails)  # model takes parameters (N, J, T, h=0), where N = size, J = proportionality constant in Hamiltonian, and T = temperature.
+model = model.Model(N, J, T, h, trails)  
+# model takes parameters (N, J, T, h=0), where N = size, J = proportionality constant in Hamiltonian, and T = temperature.
 # h = magnetic field parameter, default = 0
-# https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.62.361
-# https://csml.northwestern.edu/resources/Reprints/lnp_color.pdf
 
 print(model.get())
 print(model.hamiltonian())
@@ -42,21 +40,19 @@ for i in range(trails):  # current number of trials = 1000, can be varied as des
 print(model.get())
 print(model.hamiltonian())
 
-cluster = cm.Collective_Model(10, -1, 1, h=1, trails=clusterSize) #Breaks when h=0
+cluster = cm.Collective_Model(10, -1, 1, h=1, trails=clusterSize) # breaks when h=0
 print("Cluster Model: \n\n\n\n\n\n")
 print(cluster.get())
 print(cluster.hamiltonian())
 
 for i in range(
-        trails):  # convergence is a lot faster for the cluster model, maybe consider talking about this in final presentation? doesn't really have physical meaning though
+        trails):  # convergence is a lot faster for the cluster model
     cluster.createClusters()
     cluster.flip()
     cluster.reset_algorithm()
 
 print(cluster.get())
 print(cluster.hamiltonian())
-
-# ALEX'S GRAPH'S
 
 plt.figure(1)
 
@@ -110,16 +106,15 @@ plt.plot(Naxis, graphHamiltonian(trails, 10, 3), 'b')
 plt.plot(Naxis, graphHamiltonian(trails, 10, 5), 'y')
 plt.plot(Naxis, graphHamiltonian(trails, 10, 7), 'g')
 
-# plt.show()
+plt.show()
 
-# Shreyas' Graphs
 plt.figure(2)
 graphChangeX = np.zeros(trails)
 for i in range(trails):
     graphChangeX[i] = i + 1
 
 plt.plot(graphChangeX, model.comparisonsMatch, 'r')
-# plt.plot(graphChangeX, model.comparisonsDiff, 'b')
+plt.plot(graphChangeX, model.comparisonsDiff, 'b')
 
 plt.xlabel("Iterations")
 plt.ylabel("Similarity")
