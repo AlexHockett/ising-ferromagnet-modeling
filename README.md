@@ -1,3 +1,3 @@
 # Project Overview
 
-![Research Overview](Figures/research_poster.png)
+![Research Overview](Figures/research_poster.pdf)
