@@ -8,7 +8,7 @@ default_trails = 1000
 
 """
 N: Size of matrix (NxN) representing electron spins in ferromagnet
-J: Proportionality constant in Hamoltonian
+J: Proportionality constant in Hamiltonian
 T: External temperature
 h: Magnetic field parameter
 trials: Number of iterations of the Monte Carlo algorithm
